@@ -11,7 +11,7 @@
 
 using namespace std;
 
-#include "Classname.h"
+#include "Array.h"
 
 
 // ===========================================================================
@@ -24,6 +24,6 @@ using namespace std;
 // ===========================================================================
 int main(int argc, char* argv[]) {
   
-  printf("Hello World! /n");
+  printf("Hello World! \n");
   return 0;
 }
