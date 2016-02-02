@@ -73,6 +73,16 @@ Array Array::operator+(const Array array2){
   return newarray;
 }
 
+//opérateur égal
+void Array::operator=(const Array array2){
+  delete[] data_;
+  size_=array2.size();
+  data_ = new double[size_];
+  for (int i=0; i<array2.size();i++){
+    data_[i]=array2.data()[i];
+  }
+}
+
 // ===========================================================================
 //                                 Destructor
 // ===========================================================================

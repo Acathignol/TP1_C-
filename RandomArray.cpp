@@ -1,6 +1,7 @@
 #include <cstdlib> 
 #include <iostream>
 #include <stdio.h>
+#include <cmath>
 // ===========================================================================
 //                                  Includes
 // ===========================================================================
@@ -17,22 +18,37 @@
 RandomArray::RandomArray(int N, int A, int B) {
   size_ = N;
   data_ = new double[size_];
-  
+  int C=B-A-1;
   for (int i=0; i<N;i++){
-    data_[i]=rand() %(B-A)+A;
+    data_[i]=double(rand() %C+(A+1));
   }
 }
 
 // ===========================================================================
 //                                 Destructor
 // ===========================================================================
-RandomArray::~RandomArray(){
-  delete[] data_;
-  }
+
 // ===========================================================================
 //                               Public Methods
 // ===========================================================================
+double RandomArray::mean() {
+  int meancalcul=0;
+  for (int i=0; i<size_;i++){
+    meancalcul+=data_[i];
+  }
+  double mean = meancalcul/size_;
+  return mean;
+}
 
+double RandomArray::sd() {
+  int sdcalcul=0;
+  for (int i=0; i<size_;i++){
+    sdcalcul+=(pow(data_[i]-mean(),2));
+  }
+  
+  double sd = sqrt(sdcalcul)/size_;
+  return sd;
+}
 // ===========================================================================
 //                              Protected Methods
 // ===========================================================================

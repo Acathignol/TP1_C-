@@ -1,41 +1,54 @@
-#ifndef ARRAY_H__
-#define ARRAY_H__
+#ifndef COMPLEX_H__
+#define COMPLEX_H__
+
+#include <cstdlib> 
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+#include <cmath>
+
+#include <cstdio>
+#include <fstream>
+#include <string>
 
 // ===========================================================================
 //                                  Includes
 // ===========================================================================
 
-class Array {
+class Complex {
  public :
  
   // =========================================================================
   //                               Constructors
   // =========================================================================
-  Array();
-  Array(const Array& array);
-  Array(int size);
-  Array(int size, double value);
+  //Constructeur par défaut : Re (Real part) and Im (imaginary part)
+  Complex();
+  //Constructeur par copie
+  Complex(const Complex& complex);
   
+  Complex(double valRe, double valIm);
+
   // =========================================================================
   //                                Destructor
   // =========================================================================
-  ~Array();
+  
   // =========================================================================
   //                                  Getters
   // =========================================================================
-  int size(void) const;
-  double* data(void) const;
+  double Re(void) const;
+  double Im(void) const;
+
   // =========================================================================
   //                                  Setters
   // =========================================================================
-  void set(int where,double value);
+  void setRe(double value1);
+  void setIm(double value2);
+
   // =========================================================================
   //                                 Operators
   // =========================================================================
-  virtual double& operator[](int i);
-  virtual double operator[](int i) const;
-  virtual Array operator+(const Array array2);
-  virtual void operator=(const Array array2);
+  Complex& operator=(const Complex complex2);
+  
   // =========================================================================
   //                              Public Methods
   // =========================================================================
@@ -49,8 +62,8 @@ protected :
   // =========================================================================
   //                                Attributes
   // =========================================================================
-  int size_;
-  double* data_; 
+  double Re_;
+  double Im_;
   
 };
 
@@ -73,5 +86,17 @@ protected :
 // ===========================================================================
 
 
+//opérateur somme
+Complex operator+(const Complex& complex1,const Complex& complex2);
+//opérateur soustraction
+Complex operator-(const Complex& complex1,const Complex& complex2);
+//opérateur multiplication
+Complex operator*(const Complex& complex1,const Complex& complex2);
+//opérateur division
+Complex operator/(const Complex& lhs,const Complex& rhs);
+//Fractale
+void Fractale(int it, int n, double max,Complex base, Complex c);
+#endif // COMPLEX_H__
 
-#endif // ARRAY_H__
+
+
