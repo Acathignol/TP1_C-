@@ -101,9 +101,9 @@ int main(int argc, char* argv[]) {
   int n=0;
   Complex c(0,0);
   double max=4.;
-  for (double a=-2.; a<=2.; a+=0.1){
+  for (double a=-2.; a<=2.; a+=0.01){
     c.setRe(a);
-    for (double b=-2.; b<=2.; b+=0.1){
+    for (double b=-2.; b<=2.; b+=0.01){
       c.setIm(b);
       Fractale(it,n,max,c4,c);
     }
